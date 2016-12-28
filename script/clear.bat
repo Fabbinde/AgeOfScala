@@ -1,0 +1,7 @@
+DEL "C:\Users\Fabian\Desktop\TEMP AoS\AgeOfScala\src\controller\*.scala"
+DEL "C:\Users\Fabian\Desktop\TEMP AoS\AgeOfScala\src\main\*.scala"
+DEL "C:\Users\Fabian\Desktop\TEMP AoS\AgeOfScala\src\model\*.scala"
+DEL "C:\Users\Fabian\Desktop\TEMP AoS\AgeOfScala\src\persist\*.scala"
+DEL "C:\Users\Fabian\Desktop\TEMP AoS\AgeOfScala\src\util\*.scala"
+DEL "C:\Users\Fabian\Desktop\TEMP AoS\AgeOfScala\src\view\*.scala"
+DEL "C:\Users\Fabian\Desktop\TEMP AoS\AgeOfScala\resources\*.conf"

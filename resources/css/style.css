@@ -1,0 +1,7 @@
+.background {
+	-fx-background-image: url('/background.png');
+	-fx-background-repeat: no-repeat;
+	-fx-background-position: right top;
+	-fx-background-attachment: fixed;
+	-fx-font: 14px 'Papyrus';
+}

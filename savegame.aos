@@ -1,0 +1,1 @@
+{"name":"TestSpiel","ressourcen":{"ressourcen$1":{"Holz":{"typ":"Holz","anzahl":0},"Kohle":{"typ":"Kohle","anzahl":0},"Stein":{"typ":"Stein","anzahl":0},"Siedler":{"typ":"Siedler","anzahl":20},"Gold":{"typ":"Gold","anzahl":1000},"Nahrung":{"typ":"Nahrung","anzahl":0},"Eisen":{"typ":"Eisen","anzahl":0}}},"errichteteGebauede$1":{"alle":[{"kapazitaet":200},{"kapazitaet":200}]}}
