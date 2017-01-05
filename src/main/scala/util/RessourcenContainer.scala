@@ -1,6 +1,6 @@
-package util
+package main.scala.util
 
-import model.Ressource
+import main.scala.model.Ressource
 
 case class RessourcenContainer(private val ressourcen: Map[RessourcenEnum.Value, Ressource] = Map(
                                  RessourcenEnum.Holz -> new Ressource(RessourcenEnum.Holz, 0),

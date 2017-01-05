@@ -1,8 +1,8 @@
-package view
+package main.scala.view
 
-import util.ResultEnum
-import util.GebauedeEnum
-import controller.GameController
+import main.scala.util.ResultEnum
+import main.scala.util.GebauedeEnum
+import main.scala.controller.GameController
 
 trait Ui {
   def run() // Startfunktion

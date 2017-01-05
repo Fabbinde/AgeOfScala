@@ -1,6 +1,6 @@
-package model
+package main.scala.model
 
-import util.RessourcenEnum
+import main.scala.util.RessourcenEnum
 
 class Ressource(typ: RessourcenEnum.Value, anzahl: Integer) extends Serializable {
   val _name = typ.toString()

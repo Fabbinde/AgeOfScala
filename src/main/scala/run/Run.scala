@@ -1,13 +1,13 @@
-package main
+package main.scala.run
 
-import controller.GameController
-import util.GebauedeFactory
-import util.ConfigLoader
-import view.Ui
-import view.GuiFx
-import view.Tui
-import util.RessourcenContainer
-import util.RessourcenEnum
+import main.scala.controller.GameController
+import main.scala.util.GebauedeFactory
+import main.scala.util.ConfigLoader
+import main.scala.view.Ui
+import main.scala.view.GuiFx
+import main.scala.view.Tui
+import main.scala.util.RessourcenContainer
+import main.scala.util.RessourcenEnum
 
 object Run extends App {
 

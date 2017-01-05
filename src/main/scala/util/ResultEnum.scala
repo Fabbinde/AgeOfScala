@@ -1,4 +1,4 @@
-package util
+package main.scala.util
 
 object ResultEnum extends Enumeration {
   val ok, fehler, gebauedeFehlt, gebauedeErstellt, gebauedeEntfernt, gebauedeNichtVorhanden, zuWenigRessourcen = Value

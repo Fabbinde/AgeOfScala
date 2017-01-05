@@ -1,6 +1,6 @@
-package persist
+package main.scala.persist
 
-import model.Spiel
+import main.scala.model.Spiel
 
 class MySqlPersistController extends PersistController {
 

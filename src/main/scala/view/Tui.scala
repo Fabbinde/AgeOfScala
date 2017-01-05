@@ -1,11 +1,11 @@
-package view
+package main.scala.view
 
-import controller.GameController
-import model.Gebauede
-import util.GebauedeEnum
-import util.ResultEnum
-import util.RessourcenEnum
-import util.RessourcenContainer
+import main.scala.controller.GameController
+import main.scala.model.Gebauede
+import main.scala.util.GebauedeEnum
+import main.scala.util.ResultEnum
+import main.scala.util.RessourcenEnum
+import main.scala.util.RessourcenContainer
 
 class Tui(controller: GameController, startRessourcen: RessourcenContainer) extends Ui {
 

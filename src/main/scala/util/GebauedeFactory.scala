@@ -1,6 +1,6 @@
-package util
+package main.scala.util
 
-import model.Gebauede
+import main.scala.model.Gebauede
 
 class GebauedeFactory(private val errichteteGebauede: List[Gebauede] = List()) extends Serializable {
 

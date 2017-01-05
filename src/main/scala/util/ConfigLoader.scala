@@ -1,4 +1,4 @@
-package util
+package main.scala.util
 
 import java.io.File
 
@@ -9,10 +9,10 @@ import scala.collection.JavaConversions.mapAsScalaMap
 import com.typesafe.config.ConfigFactory
 import com.typesafe.config.ConfigObject
 
-import model.Gebauede
-import model.LagerGebauede
-import model.ProduzierendesGebauede
-import model.Wohngebauede
+import main.scala.model.Gebauede
+import main.scala.model.LagerGebauede
+import main.scala.model.ProduzierendesGebauede
+import main.scala.model.Wohngebauede
 
 import scala.collection.mutable.{ Map => MutableMap }
 

@@ -1,14 +1,14 @@
-package view
+package main.scala.view
 
 import scala.concurrent.duration.DurationInt
 
 import akka.actor.ActorSystem
-import controller.GameController
-import model.Gebauede
-import model.Ressource
-import model.ProduzierendesGebauede
-import model.Wohngebauede
-import model.LagerGebauede
+import main.scala.controller.GameController
+import main.scala.model.Gebauede
+import main.scala.model.Ressource
+import main.scala.model.ProduzierendesGebauede
+import main.scala.model.Wohngebauede
+import main.scala.model.LagerGebauede
 import scalafx.Includes.eventClosureWrapperWithParam
 import scalafx.Includes.jfxActionEvent2sfx
 import scalafx.Includes.jfxButton2sfx
@@ -47,10 +47,10 @@ import scalafx.scene.text.FontWeight
 import scalafx.scene.text.FontWeight.sfxEnum2jfx
 import scalafx.scene.text.Text
 import scalafx.scene.text.Text.sfxText2jfx
-import util.GebauedeEnum
-import util.RessourcenContainer
-import util.RessourcenEnum
-import util.ResultEnum
+import main.scala.util.GebauedeEnum
+import main.scala.util.RessourcenContainer
+import main.scala.util.RessourcenEnum
+import main.scala.util.ResultEnum
 import javafx.scene.input.MouseEvent
 import javafx.event.EventHandler
 
@@ -70,6 +70,8 @@ class GuiFx(controller: GameController, startRessourcen: RessourcenContainer) ex
   val gebauedeInfoListe: ObjectProperty[List[Text]] = ObjectProperty(this, "gebauedeInfoListe", List(new Text))
 
   val aktuelleGebaudeInfo = new StringProperty(this, "aktuelleGebauedeInfo", "")
+  
+  
   //val statistik = ObservableBuffer[String](List("Punkte: " + controller.getGameScore, "Aktuelle Spielzeit: " + controller.aktuelleSpielzeitAlsString, "Anzahl gesamter Gebäude: " + controller.getAlleGebautenGebauede().getAlle.size))
 
   gebauedeInfoListe.onChange {
@@ -101,7 +103,7 @@ class GuiFx(controller: GameController, startRessourcen: RessourcenContainer) ex
     center = gebauedeInputListeText
     bottom = new HBox {
       children = new ImageView {
-        image = new Image(this, "/buttonBauen.png")
+        image = new Image(this, "/buttonBauen.png") 
         prefHeight = 32
         prefWidth = 138
         //padding = Insets(0)
@@ -186,7 +188,7 @@ class GuiFx(controller: GameController, startRessourcen: RessourcenContainer) ex
       gebauedeButtons.insert(0, new Button {
         val baubar = if (controller.kannGebautWerden(e.name) == ResultEnum.ok) "" else "-fx-opacity: 0.2;"
         style = "-fx-background-color: black; " + baubar
-        graphic = new ImageView { image = new Image(this, "/" + e.name.toString() + ".png") }
+        graphic = new ImageView { image = new Image(this, "/" + e.name.toString() + ".png") } 
         maxHeight = 35
         maxWidth = 35
         padding = Insets(0)
@@ -228,15 +230,12 @@ class GuiFx(controller: GameController, startRessourcen: RessourcenContainer) ex
       style = "-fx-background-image: url('/hud.png'); " +
         "-fx-background-position: center center; "
       prefHeight = 174
-      //for (a <- 1 to 10) {
       children = new HBox {
         prefWidth = 250
         padding = Insets(32, 0, 0, 30)
         children = new FlowPane {
-
           children = gebauedeButtons
         }
-
         alignment = Pos.TopLeft
       }
     }

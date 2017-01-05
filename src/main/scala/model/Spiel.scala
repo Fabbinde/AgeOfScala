@@ -1,12 +1,12 @@
-package model
+package main.scala.model
 
 import org.joda.time.DateTime
 import org.joda.time.Period
 
-import util.GebauedeEnum
-import util.RessourcenEnum
-import util.RessourcenContainer
-import util.GebauedeFactory
+import main.scala.util.GebauedeEnum
+import main.scala.util.RessourcenEnum
+import main.scala.util.RessourcenContainer
+import main.scala.util.GebauedeFactory
 
 case class Spiel(name: String, ressourcen: RessourcenContainer, private val errichteteGebauede: GebauedeFactory = new GebauedeFactory, private val startZeit: DateTime = DateTime.now) extends Serializable {
 

@@ -1,0 +1,275 @@
+<classpath>
+  <classpathentry kind="src" path="src\main\scala"/>
+  <classpathentry kind="src" path="src\test\scala"/>
+  <classpathentry kind="con" path="org.scala-ide.sdt.launching.SCALA_CONTAINER"/>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\com.github.nscala-time\nscala-time_2.11\srcs\nscala-time_2.11-2.12.0-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\com.github.nscala-time\nscala-time_2.11\jars\nscala-time_2.11-2.12.0.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\com.github.nscala-time\nscala-time_2.11\docs\nscala-time_2.11-2.12.0-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\joda-time\joda-time\srcs\joda-time-2.9.3-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\joda-time\joda-time\jars\joda-time-2.9.3.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\joda-time\joda-time\docs\joda-time-2.9.3-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\com.typesafe.akka\akka-actor_2.11\srcs\akka-actor_2.11-2.4.4-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\com.typesafe.akka\akka-actor_2.11\jars\akka-actor_2.11-2.4.4.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\com.typesafe.akka\akka-actor_2.11\docs\akka-actor_2.11-2.4.4-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\com.typesafe\config\srcs\config-1.3.0-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\com.typesafe\config\bundles\config-1.3.0.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\com.typesafe\config\docs\config-1.3.0-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\org.scala-lang.modules\scala-java8-compat_2.11\srcs\scala-java8-compat_2.11-0.7.0-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\org.scala-lang.modules\scala-java8-compat_2.11\bundles\scala-java8-compat_2.11-0.7.0.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\org.scala-lang.modules\scala-java8-compat_2.11\docs\scala-java8-compat_2.11-0.7.0-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\com.lambdaworks\jacks_2.11\srcs\jacks_2.11-2.3.3-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\com.lambdaworks\jacks_2.11\jars\jacks_2.11-2.3.3.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\com.lambdaworks\jacks_2.11\docs\jacks_2.11-2.3.3-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\org.scala-lang\scalap\srcs\scalap-2.11.8-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\org.scala-lang\scalap\jars\scalap-2.11.8.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\org.scala-lang\scalap\docs\scalap-2.11.8-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="con" path="org.scala-ide.sdt.launching.SCALA_COMPILER_CONTAINER"/>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\org.scala-lang.modules\scala-parser-combinators_2.11\srcs\scala-parser-combinators_2.11-1.0.4-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\org.scala-lang.modules\scala-parser-combinators_2.11\bundles\scala-parser-combinators_2.11-1.0.4.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\org.scala-lang.modules\scala-parser-combinators_2.11\docs\scala-parser-combinators_2.11-1.0.4-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\com.typesafe.play\play_2.11\srcs\play_2.11-2.5.3-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\com.typesafe.play\play_2.11\jars\play_2.11-2.5.3.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\com.typesafe.play\play_2.11\docs\play_2.11-2.5.3-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\com.typesafe.play\build-link\srcs\build-link-2.5.3-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\com.typesafe.play\build-link\jars\build-link-2.5.3.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\com.typesafe.play\build-link\docs\build-link-2.5.3-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\com.typesafe.play\play-exceptions\srcs\play-exceptions-2.5.3-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\com.typesafe.play\play-exceptions\jars\play-exceptions-2.5.3.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\com.typesafe.play\play-exceptions\docs\play-exceptions-2.5.3-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\com.typesafe.play\play-iteratees_2.11\srcs\play-iteratees_2.11-2.5.3-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\com.typesafe.play\play-iteratees_2.11\jars\play-iteratees_2.11-2.5.3.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\com.typesafe.play\play-iteratees_2.11\docs\play-iteratees_2.11-2.5.3-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\org.scala-stm\scala-stm_2.11\srcs\scala-stm_2.11-0.7-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\org.scala-stm\scala-stm_2.11\jars\scala-stm_2.11-0.7.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\org.scala-stm\scala-stm_2.11\docs\scala-stm_2.11-0.7-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\com.typesafe.play\play-json_2.11\srcs\play-json_2.11-2.5.3-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\com.typesafe.play\play-json_2.11\jars\play-json_2.11-2.5.3.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\com.typesafe.play\play-json_2.11\docs\play-json_2.11-2.5.3-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\com.typesafe.play\play-functional_2.11\srcs\play-functional_2.11-2.5.3-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\com.typesafe.play\play-functional_2.11\jars\play-functional_2.11-2.5.3.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\com.typesafe.play\play-functional_2.11\docs\play-functional_2.11-2.5.3-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\com.typesafe.play\play-datacommons_2.11\srcs\play-datacommons_2.11-2.5.3-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\com.typesafe.play\play-datacommons_2.11\jars\play-datacommons_2.11-2.5.3.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\com.typesafe.play\play-datacommons_2.11\docs\play-datacommons_2.11-2.5.3-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\org.joda\joda-convert\srcs\joda-convert-1.8.1-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\org.joda\joda-convert\jars\joda-convert-1.8.1.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\org.joda\joda-convert\docs\joda-convert-1.8.1-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\com.fasterxml.jackson.core\jackson-core\srcs\jackson-core-2.7.1-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\com.fasterxml.jackson.core\jackson-core\bundles\jackson-core-2.7.1.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\com.fasterxml.jackson.core\jackson-core\docs\jackson-core-2.7.1-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\com.fasterxml.jackson.core\jackson-annotations\srcs\jackson-annotations-2.7.1-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\com.fasterxml.jackson.core\jackson-annotations\bundles\jackson-annotations-2.7.1.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\com.fasterxml.jackson.core\jackson-annotations\docs\jackson-annotations-2.7.1-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\com.fasterxml.jackson.core\jackson-databind\srcs\jackson-databind-2.7.1-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\com.fasterxml.jackson.core\jackson-databind\bundles\jackson-databind-2.7.1.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\com.fasterxml.jackson.core\jackson-databind\docs\jackson-databind-2.7.1-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\com.fasterxml.jackson.datatype\jackson-datatype-jdk8\srcs\jackson-datatype-jdk8-2.7.1-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\com.fasterxml.jackson.datatype\jackson-datatype-jdk8\bundles\jackson-datatype-jdk8-2.7.1.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\com.fasterxml.jackson.datatype\jackson-datatype-jdk8\docs\jackson-datatype-jdk8-2.7.1-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\com.fasterxml.jackson.datatype\jackson-datatype-jsr310\srcs\jackson-datatype-jsr310-2.7.1-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\com.fasterxml.jackson.datatype\jackson-datatype-jsr310\bundles\jackson-datatype-jsr310-2.7.1.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\com.fasterxml.jackson.datatype\jackson-datatype-jsr310\docs\jackson-datatype-jsr310-2.7.1-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\com.typesafe.play\play-netty-utils\srcs\play-netty-utils-2.5.3-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\com.typesafe.play\play-netty-utils\jars\play-netty-utils-2.5.3.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\com.typesafe.play\play-netty-utils\docs\play-netty-utils-2.5.3-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\org.slf4j\slf4j-api\srcs\slf4j-api-1.7.16-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\org.slf4j\slf4j-api\jars\slf4j-api-1.7.16.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\org.slf4j\slf4j-api\docs\slf4j-api-1.7.16-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\org.slf4j\jul-to-slf4j\srcs\jul-to-slf4j-1.7.16-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\org.slf4j\jul-to-slf4j\jars\jul-to-slf4j-1.7.16.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\org.slf4j\jul-to-slf4j\docs\jul-to-slf4j-1.7.16-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\org.slf4j\jcl-over-slf4j\srcs\jcl-over-slf4j-1.7.16-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\org.slf4j\jcl-over-slf4j\jars\jcl-over-slf4j-1.7.16.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\org.slf4j\jcl-over-slf4j\docs\jcl-over-slf4j-1.7.16-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\com.typesafe.play\play-streams_2.11\srcs\play-streams_2.11-2.5.3-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\com.typesafe.play\play-streams_2.11\jars\play-streams_2.11-2.5.3.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\com.typesafe.play\play-streams_2.11\docs\play-streams_2.11-2.5.3-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\org.reactivestreams\reactive-streams\srcs\reactive-streams-1.0.0-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\org.reactivestreams\reactive-streams\jars\reactive-streams-1.0.0.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\org.reactivestreams\reactive-streams\docs\reactive-streams-1.0.0-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\com.typesafe.akka\akka-stream_2.11\srcs\akka-stream_2.11-2.4.4-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\com.typesafe.akka\akka-stream_2.11\jars\akka-stream_2.11-2.4.4.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\com.typesafe.akka\akka-stream_2.11\docs\akka-stream_2.11-2.4.4-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\com.typesafe\ssl-config-akka_2.11\srcs\ssl-config-akka_2.11-0.2.1-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\com.typesafe\ssl-config-akka_2.11\bundles\ssl-config-akka_2.11-0.2.1.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\com.typesafe\ssl-config-akka_2.11\docs\ssl-config-akka_2.11-0.2.1-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\com.typesafe\ssl-config-core_2.11\srcs\ssl-config-core_2.11-0.2.1-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\com.typesafe\ssl-config-core_2.11\bundles\ssl-config-core_2.11-0.2.1.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\com.typesafe\ssl-config-core_2.11\docs\ssl-config-core_2.11-0.2.1-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\com.typesafe.play\twirl-api_2.11\srcs\twirl-api_2.11-1.1.1-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\com.typesafe.play\twirl-api_2.11\jars\twirl-api_2.11-1.1.1.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\com.typesafe.play\twirl-api_2.11\docs\twirl-api_2.11-1.1.1-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\org.apache.commons\commons-lang3\srcs\commons-lang3-3.4-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\org.apache.commons\commons-lang3\jars\commons-lang3-3.4.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\org.apache.commons\commons-lang3\docs\commons-lang3-3.4-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\com.typesafe.akka\akka-slf4j_2.11\srcs\akka-slf4j_2.11-2.4.4-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\com.typesafe.akka\akka-slf4j_2.11\jars\akka-slf4j_2.11-2.4.4.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\com.typesafe.akka\akka-slf4j_2.11\docs\akka-slf4j_2.11-2.4.4-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\commons-codec\commons-codec\srcs\commons-codec-1.10-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\commons-codec\commons-codec\jars\commons-codec-1.10.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\commons-codec\commons-codec\docs\commons-codec-1.10-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\xerces\xercesImpl\srcs\xercesImpl-2.11.0-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\xerces\xercesImpl\jars\xercesImpl-2.11.0.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\xerces\xercesImpl\docs\xercesImpl-2.11.0-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\xml-apis\xml-apis\srcs\xml-apis-1.4.01-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\xml-apis\xml-apis\jars\xml-apis-1.4.01.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\xml-apis\xml-apis\docs\xml-apis-1.4.01-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\javax.transaction\jta\srcs\jta-1.1-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\javax.transaction\jta\jars\jta-1.1.jar"/>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\com.google.inject\guice\srcs\guice-4.0-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\com.google.inject\guice\jars\guice-4.0.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\com.google.inject\guice\docs\guice-4.0-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\javax.inject\javax.inject\srcs\javax.inject-1-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\javax.inject\javax.inject\jars\javax.inject-1.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\javax.inject\javax.inject\docs\javax.inject-1-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\aopalliance\aopalliance\srcs\aopalliance-1.0-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\aopalliance\aopalliance\jars\aopalliance-1.0.jar"/>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\com.google.guava\guava\srcs\guava-16.0.1-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\com.google.guava\guava\bundles\guava-16.0.1.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\com.google.guava\guava\docs\guava-16.0.1-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\com.google.inject.extensions\guice-assistedinject\srcs\guice-assistedinject-4.0-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\com.google.inject.extensions\guice-assistedinject\jars\guice-assistedinject-4.0.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\com.google.inject.extensions\guice-assistedinject\docs\guice-assistedinject-4.0-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\org.scalafx\scalafx_2.11\srcs\scalafx_2.11-8.0.102-R11-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\org.scalafx\scalafx_2.11\jars\scalafx_2.11-8.0.102-R11.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\org.scalafx\scalafx_2.11\docs\scalafx_2.11-8.0.102-R11-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\org.scalactic\scalactic_2.11\srcs\scalactic_2.11-3.0.1-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\org.scalactic\scalactic_2.11\bundles\scalactic_2.11-3.0.1.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\org.scalactic\scalactic_2.11\docs\scalactic_2.11-3.0.1-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\junit\junit\srcs\junit-4.4-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\junit\junit\jars\junit-4.4.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\junit\junit\docs\junit-4.4-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\org.scalatest\scalatest_2.11\srcs\scalatest_2.11-3.0.1-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\org.scalatest\scalatest_2.11\bundles\scalatest_2.11-3.0.1.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\org.scalatest\scalatest_2.11\docs\scalatest_2.11-3.0.1-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\org.scala-lang.modules\scala-xml_2.11\srcs\scala-xml_2.11-1.0.5-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\org.scala-lang.modules\scala-xml_2.11\bundles\scala-xml_2.11-1.0.5.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\org.scala-lang.modules\scala-xml_2.11\docs\scala-xml_2.11-1.0.5-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\org.specs2\specs2-core_2.11\srcs\specs2-core_2.11-3.8.6-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\org.specs2\specs2-core_2.11\jars\specs2-core_2.11-3.8.6.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\org.specs2\specs2-core_2.11\docs\specs2-core_2.11-3.8.6-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\org.specs2\specs2-matcher_2.11\srcs\specs2-matcher_2.11-3.8.6-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\org.specs2\specs2-matcher_2.11\jars\specs2-matcher_2.11-3.8.6.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\org.specs2\specs2-matcher_2.11\docs\specs2-matcher_2.11-3.8.6-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\org.specs2\specs2-common_2.11\srcs\specs2-common_2.11-3.8.6-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\org.specs2\specs2-common_2.11\jars\specs2-common_2.11-3.8.6.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\org.specs2\specs2-common_2.11\docs\specs2-common_2.11-3.8.6-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\org.specs2\specs2-codata_2.11\srcs\specs2-codata_2.11-3.8.6-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\org.specs2\specs2-codata_2.11\jars\specs2-codata_2.11-3.8.6.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\org.specs2\specs2-codata_2.11\docs\specs2-codata_2.11-3.8.6-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\org.scalaz\scalaz-core_2.11\srcs\scalaz-core_2.11-7.2.7-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\org.scalaz\scalaz-core_2.11\bundles\scalaz-core_2.11-7.2.7.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\org.scalaz\scalaz-core_2.11\docs\scalaz-core_2.11-7.2.7-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\org.scalaz\scalaz-effect_2.11\srcs\scalaz-effect_2.11-7.2.7-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\org.scalaz\scalaz-effect_2.11\bundles\scalaz-effect_2.11-7.2.7.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\org.scalaz\scalaz-effect_2.11\docs\scalaz-effect_2.11-7.2.7-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry sourcepath="C:\Users\Fabian\.ivy2\cache\org.scalaz\scalaz-concurrent_2.11\srcs\scalaz-concurrent_2.11-7.2.7-sources.jar" kind="lib" path="C:\Users\Fabian\.ivy2\cache\org.scalaz\scalaz-concurrent_2.11\bundles\scalaz-concurrent_2.11-7.2.7.jar">
+    <attributes>
+      <attribute name="javadoc_location" value="jar:file:C:\Users\Fabian\.ivy2\cache\org.scalaz\scalaz-concurrent_2.11\docs\scalaz-concurrent_2.11-7.2.7-javadoc.jar!/"/>
+    </attributes>
+  </classpathentry>
+  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+  <classpathentry kind="output" path="bin"/>
+</classpath>

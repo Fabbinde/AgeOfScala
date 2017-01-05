@@ -1,29 +1,27 @@
-package controller
+package main.scala.controller
 
 import akka.actor._
-import model.Gebauede
-import util.GebauedeFactory
-import model.LagerGebauede
-import model.ProduzierendesGebauede
-import model.Ressource
-import model.Spiel
-import model.Wohngebauede
-import persist.MySqlPersistController
-import persist.PersistController
-import util.ConfigLoader
-import util.GebauedeEnum
-import util.RessourcenEnum
-import util.ResultEnum
+import main.scala.util.GebauedeFactory
+import main.scala.model.LagerGebauede
+import main.scala.model.ProduzierendesGebauede
+import main.scala.model.Ressource
+import main.scala.model.Spiel
+import main.scala.model.Wohngebauede
+import main.scala.persist.PersistController
+import main.scala.util.ConfigLoader
+import main.scala.util.GebauedeEnum
+import main.scala.util.RessourcenEnum
+import main.scala.util.ResultEnum
 import scala.concurrent.duration._
-import persist.FilePersistController
-import util.KategorieScoreEnum
+import main.scala.persist.FilePersistController
+import main.scala.util.KategorieScoreEnum
 import org.joda.time.Period
-import util.RessourcenContainer
+import main.scala.util.RessourcenContainer
 
 // Also das Spiel wird immer neu erstellt und dem Controller zugewiesen. Das ist das einzige Attribut das var haben darf 
 // (ein Objekt muss man immer aendern, sonst muesste man das Spiel immer wieder neu kompilieren)
 
-class GameController(spielName: String, private var spiel: Spiel, private val alleVerfuegbarenGebauede: GebauedeFactory) {
+class GameController(val spielName: String, private var spiel: Spiel, private val alleVerfuegbarenGebauede: GebauedeFactory) {
 
   private val persistController: PersistController = new FilePersistController
 
@@ -187,6 +185,7 @@ class GameController(spielName: String, private var spiel: Spiel, private val al
   def aktuelleSpielzeitAlsPeriod: Period = {
     spiel.aktuelleSpielZeit
   }
+  
 
   def aktuelleSpielzeitAlsString: String = {
     val p: Period = spiel.aktuelleSpielZeit

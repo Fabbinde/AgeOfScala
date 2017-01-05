@@ -1,6 +1,6 @@
-package persist
+package main.scala.persist
 
-import model.Spiel
+import main.scala.model.Spiel
 
 trait PersistController {
   def save(spiel: Spiel): Boolean

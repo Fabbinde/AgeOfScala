@@ -1,4 +1,4 @@
-package util
+package main.scala.util
 
 
 object RessourcenEnum extends Enumeration {

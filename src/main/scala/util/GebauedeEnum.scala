@@ -1,4 +1,4 @@
-package util
+package main.scala.util
 
 object GebauedeEnum extends Enumeration {
   val Holzfaeller, Steinmetz, GoldGraeber, Muehle, KleinesLager, GrossesLager, KleinesWohnhaus, MittleresWohnhaus, GrossesWohnhaus = Value

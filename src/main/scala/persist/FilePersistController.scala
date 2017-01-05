@@ -1,6 +1,6 @@
-package persist
+package main.scala.persist
 
-import model.Spiel
+import main.scala.model.Spiel
 import com.lambdaworks.jacks.JacksMapper
 import scala.io.Source
 import java.io.FileReader
