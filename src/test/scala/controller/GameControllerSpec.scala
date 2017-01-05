@@ -11,7 +11,6 @@ import main.scala.model.Gebauede
 
 import org.specs2._
 
-
 class GameControllerSpec extends mutable.Specification {
 
   val startSettler = 20
@@ -19,9 +18,9 @@ class GameControllerSpec extends mutable.Specification {
   val startGold = 201
   val startStone = 202
   val startFood = 203
-  
+
   val gameName = "TestGame"
-  
+
   val smallStock = ConfigLoader.erstelleDefaultGebauedeMitInfo(GebauedeEnum.KleinesLager).get
 
   val gebauede: GebauedeFactory = ConfigLoader.ladeGebauede
@@ -38,7 +37,7 @@ class GameControllerSpec extends mutable.Specification {
   controller.spielStarten(res)
 
   "The game " should {
-    "have the name " + gameName  in {
+    "have the name " + gameName in {
       controller.spielName must_== gameName
     }
     "start with " + startSettler + " settler" in {
@@ -70,16 +69,4 @@ class GameControllerSpec extends mutable.Specification {
     }
 
   }
-
-  /*"The 'Hello world' string" should {
-    "contain 11 characters" in {
-      "Hello world" must haveSize(11)
-    }
-    "start with 'Hello'" in {
-      "Hello world" must startWith("Hello")
-    }
-    "end with 'world'" in {
-      "Hello world" must endWith("world")
-    }
- */
 }

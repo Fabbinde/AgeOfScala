@@ -17,7 +17,6 @@ import main.scala.model.Wohngebauede
 import scala.collection.mutable.{ Map => MutableMap }
 
 object ConfigLoader {
-  // config-tutorial.scala
   def ladeGebauede: GebauedeFactory = {
     val file = ConfigFactory.parseFile(new File("resources/game.conf"))
     val conf = ConfigFactory.load(file).getConfig("aos.Gebauede")

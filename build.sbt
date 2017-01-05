@@ -24,4 +24,6 @@ scalacOptions in Test ++= Seq(
 	"-Yrangepos"
 )
 
+parallelExecution in Test := false
+
 fork in run := true
