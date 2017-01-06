@@ -26,4 +26,5 @@ scalacOptions in Test ++= Seq(
 
 parallelExecution in Test := false
 
-fork in run := true
+
+fork := true

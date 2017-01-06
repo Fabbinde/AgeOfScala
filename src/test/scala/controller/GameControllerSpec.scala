@@ -11,7 +11,7 @@ import main.scala.model.Gebauede
 
 import org.specs2._
 
-class GameControllerSpec extends mutable.Specification {
+class GameControllerSpec extends mutable.Specification { isolated
 
   val startSettler = 20
   val startWood = 200
@@ -67,6 +67,29 @@ class GameControllerSpec extends mutable.Specification {
     "start with a score of 200 points" in {
       controller.getGameScore must_== 200
     }
-
   }
+
+  "A game without a mill" should {
+
+    "now still have NOT a mill" in {
+      controller.gebauedeBauen(GebauedeEnum.KleinesLager)
+      controller.gebauedeBauen(GebauedeEnum.Muehle)
+      controller.getAlleGebautenGebauede.getGebauede(GebauedeEnum.Muehle) must beNone
+    }
+    "but should have 2 stock buildings" in {
+      controller.gebauedeBauen(GebauedeEnum.KleinesLager)
+      controller.gebauedeBauen(GebauedeEnum.Muehle)
+      controller.getAlleGebautenGebauede.getAnzahlGebauede(GebauedeEnum.KleinesLager) must_== 2
+    }
+  }
+  /*controller.aktuallisiereSpielRessourcen
+
+  val game_7 = game_6.ressourceHinzufuegen(RessourcenEnum.Holz, 200)
+  val game_8 = game_7.gebauedeHinzufuegen(ConfigLoader.erstelleDefaultGebauedeMitInfo(GebauedeEnum.Muehle).get)
+
+  "A game without a mill" should {
+    "now have a mill" in {
+      game_2.getAlleErrichteteGebauede.getGebauede(GebauedeEnum.Muehle) must beSome[Gebauede]
+    }
+  }*/
 }

@@ -10,7 +10,7 @@ import main.scala.util.ConfigLoader
 
 import org.specs2._
 
-class SpielSpec extends mutable.Specification {
+class SpielSpec extends mutable.Specification { isolated
 
   val gameName = "TestSpiel"
 
@@ -59,7 +59,17 @@ class SpielSpec extends mutable.Specification {
     }
   }
 
-  def twoStocks(g: Spiel): Boolean = {
+  val game_6 = game_5.ressourceAbziehen(RessourcenEnum.Holz, 200)
+  val game_7 = game_6.gebauedeHinzufuegen(ConfigLoader.erstelleDefaultGebauedeMitInfo(GebauedeEnum.Muehle).get)
+
+  "A game without a mill" should {
+    "now have a mill" in {
+      game_7.getAlleErrichteteGebauede.getGebauede(GebauedeEnum.Muehle) must beSome[Gebauede]
+    }
+  }
+
+
+  def twoStocks(g: Spiel): Boolean = { // Hat es zwei Lager?
     return g.getAlleErrichteteGebauede.getGebauede(GebauedeEnum.KleinesLager).get.isInstanceOf[Gebauede] &&
       g.getAlleErrichteteGebauede.getAnzahlGebauede(GebauedeEnum.KleinesLager) >= 2
   }

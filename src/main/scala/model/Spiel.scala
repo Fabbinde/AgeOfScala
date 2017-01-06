@@ -39,17 +39,17 @@ case class Spiel(name: String, ressourcen: RessourcenContainer, private val erri
 
   def ressourceAbziehen(ressource: RessourcenEnum.Value, anzahl: Integer): Spiel = {
     val sollGroesse: Int = ressourcen.getRessource(ressource).getAnzahl - anzahl
-    if (sollGroesse == 0) return new Spiel(name, ressourcen, errichteteGebauede, startZeit)
-    if (sollGroesse < 0) return new Spiel(name, ressourcen.minusRessource(ressourcen.getRessource(ressource).getAnzahl, ressource), errichteteGebauede, startZeit)
+    //if (sollGroesse == 0) return new Spiel(name, ressourcen, errichteteGebauede, startZeit)
+    //if (sollGroesse < 0) return new Spiel(name, ressourcen.minusRessource(ressourcen.getRessource(ressource).getAnzahl, ressource), errichteteGebauede, startZeit)
     return new Spiel(name, ressourcen.minusRessource(anzahl, ressource), errichteteGebauede, startZeit)
   }
 
   def getAlleErrichteteGebauede: GebauedeFactory = errichteteGebauede
 
   def getLagerKapazitaet: Int = {
-    var kap: Int = 0
-    getAlleErrichteteGebauede.getAlle.filter { g => g.isInstanceOf[LagerGebauede] }.foreach { case l: LagerGebauede => kap += l.getKapazitaet }
-    kap
+    return getAlleErrichteteGebauede.getAlle.foldLeft(0) { (sum, item) =>
+      item match { case l: LagerGebauede => sum + l.getKapazitaet }
+    }
   }
 
   def aktuelleSpielZeit: Period = {

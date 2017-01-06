@@ -8,11 +8,15 @@ import java.io.ObjectOutputStream
 import java.io.FileOutputStream
 import java.io.ObjectInputStream
 import java.io.FileInputStream
+import java.io.File
+import java.io.BufferedInputStream
 
 class FilePersistController extends PersistController {
 
+  val filename = "game.aos"
+  
   def save(spiel: Spiel): Boolean = {
-    val oos = new ObjectOutputStream(new FileOutputStream("game.aos"))
+    val oos = new ObjectOutputStream(new FileOutputStream(filename))
     oos.writeObject(spiel)
     oos.close
 
@@ -27,7 +31,11 @@ class FilePersistController extends PersistController {
   }
 
   def delete(spiel: Spiel): Boolean = {
-    true
+    new File(filename).delete
+  }
+
+  def fileExist: Boolean = {
+    new File(filename).exists
   }
 
 }

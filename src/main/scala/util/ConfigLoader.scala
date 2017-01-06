@@ -17,8 +17,11 @@ import main.scala.model.Wohngebauede
 import scala.collection.mutable.{ Map => MutableMap }
 
 object ConfigLoader {
+  
+  val filepath = "resources/game.conf"
+  
   def ladeGebauede: GebauedeFactory = {
-    val file = ConfigFactory.parseFile(new File("resources/game.conf"))
+    val file = ConfigFactory.parseFile(new File(filepath))
     val conf = ConfigFactory.load(file).getConfig("aos.Gebauede")
     var factory: GebauedeFactory = new GebauedeFactory
 
@@ -51,7 +54,7 @@ object ConfigLoader {
   }
 
   def erstelleDefaultGebauedeMitInfo(name: GebauedeEnum.Value): Option[Gebauede] = {
-    val file = ConfigFactory.parseFile(new File("resources/game.conf"))
+    val file = ConfigFactory.parseFile(new File(filepath))
     val config = ConfigFactory.load(file).getConfig("aos.Gebauede." + name.toString())
     val _name = config.getString("Name")
     val typ = config.getString("Typ")
@@ -73,7 +76,7 @@ object ConfigLoader {
   }
 
   def ladeBenoetigteGebauede(gebauedeTyp: GebauedeEnum.Value): Map[Gebauede, Int] = {
-    val file = ConfigFactory.parseFile(new File("resources/game.conf"))
+    val file = ConfigFactory.parseFile(new File(filepath))
     val benoetigteGebauede = ConfigFactory.load(file).getObject("aos.Gebauede." + gebauedeTyp + ".BenoetigtGebauede")
     //println(benoetigteGebauede.values())
     val map = MutableMap[Gebauede, Int]()
@@ -85,7 +88,7 @@ object ConfigLoader {
 
   def ladeGebauedeInfo(info: GebauedeInformation.Value, gebauedeTyp: GebauedeEnum.Value, ressourcenTyp: Option[RessourcenEnum.Value] = None): Either[Int, String] = {
     // Either heist das es entweder String oder Int sein kann, da in der Config entweder Int oder String drinn steht
-    val file = ConfigFactory.parseFile(new File("resources/game.conf"))
+    val file = ConfigFactory.parseFile(new File(filepath))
     val benoetigteRessourcen = ConfigFactory.load(file).getObject("aos.Gebauede." + gebauedeTyp + "." + info)
     if (ressourcenTyp.isDefined) {
       if (benoetigteRessourcen.containsKey(ressourcenTyp.get.toString())) {
