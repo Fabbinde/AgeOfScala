@@ -48,7 +48,10 @@ case class Spiel(name: String, ressourcen: RessourcenContainer, private val erri
 
   def getLagerKapazitaet: Int = {
     return getAlleErrichteteGebauede.getAlle.foldLeft(0) { (sum, item) =>
-      item match { case l: LagerGebauede => sum + l.getKapazitaet }
+      item match {
+        case l: LagerGebauede => sum + l.getKapazitaet
+        case _: Gebauede      => sum
+      }
     }
   }
 

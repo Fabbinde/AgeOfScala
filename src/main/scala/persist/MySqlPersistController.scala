@@ -8,8 +8,8 @@ class MySqlPersistController extends PersistController {
     true
   }
 
-  def load: Spiel = {
-    null // TODO Dummy, mit Spiel dann ersetzen
+  def load: Option[Spiel] = {
+    None // TODO Dummy, mit Spiel dann ersetzen
   }
 
   def delete(spiel: Spiel): Boolean = {

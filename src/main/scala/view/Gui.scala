@@ -53,14 +53,17 @@ import main.scala.util.RessourcenEnum
 import main.scala.util.ResultEnum
 import javafx.scene.input.MouseEvent
 import javafx.event.EventHandler
+import scalafx.scene.control.TextInputDialog
+import java.util.Calendar
 
-
-
-class GuiFx(controller: GameController, startRessourcen: RessourcenContainer) extends JFXApp {
+class GuiFx(controller: GameController) extends JFXApp {
 
   val BUFFER = "        "
 
-  controller.spielStarten(startRessourcen)
+  //controller.spielStarten(startRessourcen)
+  //if (!controller.spielLaden) {
+  //  newGame
+  //}
 
   val verfuegbareGebauede = ObservableBuffer[Gebauede](controller.getAlleVerfuegbarenGebauede.getAlle)
   val verfuegbareRessourcen = ObservableBuffer[Ressource](controller.getMeineRessourcen.getAsList)
@@ -70,8 +73,7 @@ class GuiFx(controller: GameController, startRessourcen: RessourcenContainer) ex
   val gebauedeInfoListe: ObjectProperty[List[Text]] = ObjectProperty(this, "gebauedeInfoListe", List(new Text))
 
   val aktuelleGebaudeInfo = new StringProperty(this, "aktuelleGebauedeInfo", "")
-  
-  
+
   //val statistik = ObservableBuffer[String](List("Punkte: " + controller.getGameScore, "Aktuelle Spielzeit: " + controller.aktuelleSpielzeitAlsString, "Anzahl gesamter Gebäude: " + controller.getAlleGebautenGebauede().getAlle.size))
 
   gebauedeInfoListe.onChange {
@@ -103,7 +105,7 @@ class GuiFx(controller: GameController, startRessourcen: RessourcenContainer) ex
     center = gebauedeInputListeText
     bottom = new HBox {
       children = new ImageView {
-        image = new Image(this, "/buttonBauen.png") 
+        image = new Image(this, "/buttonBauen.png")
         prefHeight = 32
         prefWidth = 138
         //padding = Insets(0)
@@ -130,6 +132,24 @@ class GuiFx(controller: GameController, startRessourcen: RessourcenContainer) ex
       //headerText = "Hinweis: " + result.get
       //contentText = result.g.toString()
     }.showAndWait()
+  }
+
+  def newGame {
+    val now = Calendar.getInstance().getTime()
+    val dialog = new TextInputDialog(defaultValue = "Spieler_" + now) {
+      initOwner(stage)
+      title = "Neues Spiel"
+      headerText = "Age of Scala - Neues Spiel"
+      contentText = "Bitte den Namen eingeben:"
+    }
+
+    val result = dialog.showAndWait()
+
+    result match {
+      case Some(name) => println("Your name: " + name)
+      case None       => println("Dialog was canceled.")
+    }
+
   }
 
   private def createRessourcenTitel = new TilePane {
@@ -188,7 +208,7 @@ class GuiFx(controller: GameController, startRessourcen: RessourcenContainer) ex
       gebauedeButtons.insert(0, new Button {
         val baubar = if (controller.kannGebautWerden(e.name) == ResultEnum.ok) "" else "-fx-opacity: 0.2;"
         style = "-fx-background-color: black; " + baubar
-        graphic = new ImageView { image = new Image(this, "/" + e.name.toString() + ".png") } 
+        graphic = new ImageView { image = new Image(this, "/" + e.name.toString() + ".png") }
         maxHeight = 35
         maxWidth = 35
         padding = Insets(0)
@@ -358,7 +378,7 @@ class GuiFx(controller: GameController, startRessourcen: RessourcenContainer) ex
         items = List(
           new MenuItem("Neues Spiel") { //onAction = {
             onAction = {
-              e: ActionEvent => controller.spielStarten(startRessourcen) // TODO ResultMatcher drum rum?
+              e: ActionEvent => controller.spielStarten // TODO ResultMatcher drum rum?
             }
           },
           new MenuItem("Spiel speichern") {
@@ -386,7 +406,7 @@ class GuiFx(controller: GameController, startRessourcen: RessourcenContainer) ex
   }
 
   def run() {
-    controller.spielStarten(startRessourcen)
+    //controller.spielStarten
   }
 
   def gebauedeBauen(typ: GebauedeEnum.Value) {

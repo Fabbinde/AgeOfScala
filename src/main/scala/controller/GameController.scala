@@ -21,7 +21,7 @@ import main.scala.util.RessourcenContainer
 // Also das Spiel wird immer neu erstellt und dem Controller zugewiesen. Das ist das einzige Attribut das var haben darf 
 // (ein Objekt muss man immer aendern, sonst muesste man das Spiel immer wieder neu kompilieren)
 
-class GameController(val spielName: String, private var spiel: Spiel, private val alleVerfuegbarenGebauede: GebauedeFactory) {
+class GameController(private var spiel: Spiel, private val alleVerfuegbarenGebauede: GebauedeFactory, private val startRessourcen: RessourcenContainer) {
 
   private val persistController: PersistController = new FilePersistController
 
@@ -39,10 +39,10 @@ class GameController(val spielName: String, private var spiel: Spiel, private va
     interval = 1 seconds,
     runnable = taskAktuallisieren)
 
-  def spielStarten(startRessourcen: RessourcenContainer) {
+  def spielStarten {
 
     // Spiel soll immutable sein, daher muss das Objekt immer neu gesetzt werden
-    spiel = new Spiel(spielName, startRessourcen, new GebauedeFactory)
+    spiel = new Spiel("TestSpiel", startRessourcen, new GebauedeFactory)
     spiel = spiel.gebauedeHinzufuegen(ConfigLoader.erstelleDefaultGebauedeMitInfo(GebauedeEnum.KleinesLager).get)
 
   }
@@ -56,9 +56,16 @@ class GameController(val spielName: String, private var spiel: Spiel, private va
   }
 
   def spielLaden: Boolean = {
-    val spielLoaded = persistController.load
-    if (spielLoaded.isInstanceOf[Spiel]) spiel = spielLoaded; return true
-    false
+    //val spielLoaded = persistController.load
+    persistController.load match {
+      case Some(i) => {
+        spiel = i
+        //return true
+      }
+      case None => return false
+    }
+    //if (spielLoaded.) spiel = spielLoaded; return true
+    true
   }
 
   def gebauedeBauen(gebauede: GebauedeEnum.Value): ResultEnum.Value = {
@@ -185,7 +192,6 @@ class GameController(val spielName: String, private var spiel: Spiel, private va
   def aktuelleSpielzeitAlsPeriod: Period = {
     spiel.aktuelleSpielZeit
   }
-  
 
   def aktuelleSpielzeitAlsString: String = {
     val p: Period = spiel.aktuelleSpielZeit

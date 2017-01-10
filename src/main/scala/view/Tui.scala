@@ -7,7 +7,7 @@ import main.scala.util.ResultEnum
 import main.scala.util.RessourcenEnum
 import main.scala.util.RessourcenContainer
 
-class Tui(controller: GameController, startRessourcen: RessourcenContainer) extends Ui {
+class Tui(controller: GameController) extends Ui {
 
   def showIntro {
     println("     ||+ Age of Scala +||")
@@ -50,7 +50,7 @@ class Tui(controller: GameController, startRessourcen: RessourcenContainer) exte
     showIntro
     showMenu
 
-    controller.spielStarten(startRessourcen)
+    //controller.spielStarten(startRessourcen)
 
     for (ln <- io.Source.stdin.getLines) {
       println("---------------------")

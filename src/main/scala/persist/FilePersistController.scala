@@ -13,8 +13,8 @@ import java.io.BufferedInputStream
 
 class FilePersistController extends PersistController {
 
-  val filename = "game.aos"
-  
+  val filename = "savegame.aos"
+
   def save(spiel: Spiel): Boolean = {
     val oos = new ObjectOutputStream(new FileOutputStream(filename))
     oos.writeObject(spiel)
@@ -23,11 +23,14 @@ class FilePersistController extends PersistController {
     true
   }
 
-  def load: Spiel = {
-    val ois = new ObjectInputStream(new FileInputStream("game.aos"))
-    val spiel: Spiel = ois.readObject().asInstanceOf[Spiel]
-    ois.close()
-    spiel
+  def load: Option[Spiel] = {
+    if (fileExist) {
+      val ois = new ObjectInputStream(new FileInputStream("savegame.aos"))
+      val spiel: Spiel = ois.readObject().asInstanceOf[Spiel]
+      ois.close()
+      return Some(spiel)
+    }
+    None
   }
 
   def delete(spiel: Spiel): Boolean = {

@@ -13,8 +13,6 @@ object Run extends App {
 
   val gebauede: GebauedeFactory = ConfigLoader.ladeGebauede
 
-  val controller: GameController = new GameController("TestSpiel", null, gebauede)
-
   val cont: RessourcenContainer = new RessourcenContainer
   val res = cont.addRessource(200, RessourcenEnum.Holz).
     addRessource(20, RessourcenEnum.Siedler).
@@ -22,7 +20,10 @@ object Run extends App {
     addRessource(200, RessourcenEnum.Stein).
     addRessource(200, RessourcenEnum.Nahrung)
 
-  val guiFx = new GuiFx(controller, res) with Ui
+  val controller: GameController = new GameController(null, gebauede, res)
+  controller.spielStarten
+
+  val guiFx = new GuiFx(controller) with Ui
   val hello = new Thread(new Runnable {
     def run() {
       guiFx.main(Array())
@@ -30,7 +31,7 @@ object Run extends App {
   })
   hello.start()
 
-  val tui = new Tui(controller, res) with Ui
+  val tui = new Tui(controller) with Ui
   tui.run
 
 }
