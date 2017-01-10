@@ -34,7 +34,7 @@ case class RessourcenContainer(private val ressourcen: Map[RessourcenEnum.Value,
     val stein = holz.buildContainer(RessourcenEnum.Stein, getRessource(RessourcenEnum.Stein).getAnzahl - con.getRessource(RessourcenEnum.Stein).getAnzahl)
     val gold = stein.buildContainer(RessourcenEnum.Gold, getRessource(RessourcenEnum.Gold).getAnzahl - con.getRessource(RessourcenEnum.Gold).getAnzahl)
     val nahrung = gold.buildContainer(RessourcenEnum.Nahrung, getRessource(RessourcenEnum.Nahrung).getAnzahl - con.getRessource(RessourcenEnum.Nahrung).getAnzahl)
-    nahrung.buildContainer(RessourcenEnum.Siedler, getRessource(RessourcenEnum.Siedler).getAnzahl + con.getRessource(RessourcenEnum.Siedler).getAnzahl)
+    nahrung.buildContainer(RessourcenEnum.Siedler, getRessource(RessourcenEnum.Siedler).getAnzahl - con.getRessource(RessourcenEnum.Siedler).getAnzahl)
   }
 
   def empty : Boolean = {

@@ -78,7 +78,6 @@ object ConfigLoader {
   def ladeBenoetigteGebauede(gebauedeTyp: GebauedeEnum.Value): Map[Gebauede, Int] = {
     val file = ConfigFactory.parseFile(new File(filepath))
     val benoetigteGebauede = ConfigFactory.load(file).getObject("aos.Gebauede." + gebauedeTyp + ".BenoetigtGebauede")
-    //println(benoetigteGebauede.values())
     val map = MutableMap[Gebauede, Int]()
 
     benoetigteGebauede.iterator map (t =>
