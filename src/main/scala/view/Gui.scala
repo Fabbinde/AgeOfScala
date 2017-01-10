@@ -67,10 +67,11 @@ class GuiFx(controller: GameController) extends JFXApp {
   val gebauedeLabel = ObservableBuffer[Text]()
 
   val gebauedeInfoListe: ObjectProperty[List[Text]] = ObjectProperty(this, "gebauedeInfoListe", List(new Text))
+  val statistikListe: ObjectProperty[List[Text]] = ObjectProperty(this, "statistikListe", List(new Text))
 
   val aktuelleGebaudeInfo = new StringProperty(this, "aktuelleGebauedeInfo", "")
+  val aktuelleStatistik = new StringProperty(this, "aktuelleStatistik", "")
 
-  //val statistik = ObservableBuffer[String](List("Punkte: " + controller.getGameScore, "Aktuelle Spielzeit: " + controller.aktuelleSpielzeitAlsString, "Anzahl gesamter Gebäude: " + controller.getAlleGebautenGebauede().getAlle.size))
 
   if (!controller.spielVorhanden) newGame
 
@@ -82,8 +83,20 @@ class GuiFx(controller: GameController) extends JFXApp {
     }
   }
 
+  statistikListe.onChange {
+    if (aktuelleStatistik.get != "") {
+      gebauedeInfoBox.visible = true
+    } else {
+      gebauedeInfoBox.visible = false
+    }
+  }
+
   val gebauedeInputListeText = new VBox {
     children = gebauedeInfoListe.get
+  }
+
+  val statistikInputListeText = new VBox {
+    children = statistikListe.get
   }
 
   val gebauedeInfoBoxInput = new BorderPane {
@@ -106,7 +119,6 @@ class GuiFx(controller: GameController) extends JFXApp {
         image = new Image(this, "/buttonBauen.png")
         prefHeight = 32
         prefWidth = 138
-        //padding = Insets(0)
         padding = Insets(20, 0, 0, 70)
 
         onMouseClicked = new EventHandler[MouseEvent] {
@@ -117,6 +129,11 @@ class GuiFx(controller: GameController) extends JFXApp {
         }
       }
     }
+  }
+
+  val statistikBoxInput = new BorderPane {
+    margin = Insets(5, 0, 0, -20)
+    center = statistikInputListeText
   }
 
   createGebauedeButtons
@@ -147,7 +164,7 @@ class GuiFx(controller: GameController) extends JFXApp {
     val result = dialog.showAndWait()
 
     result match {
-      case Some(name) => println("Your name: " + name)
+      case Some(name) => controller.setSpielName(name)
       case None       => println("Dialog was canceled.")
     }
 
@@ -190,7 +207,7 @@ class GuiFx(controller: GameController) extends JFXApp {
           margin = Insets(5, 0, 0, 11)
           wrappingWidth = 50
         },
-        new Text(controller.getMeineRessourcen.getRessource(RessourcenEnum.Siedler).getAnzahl.toString()) {
+        new Text(controller.getMeineRessourcen.getRessource(RessourcenEnum.Siedler).getAnzahl.toString) {
           font = Font.font("Poor Richard", FontWeight.Bold, 12)
           fill = Color.White
           id = RessourcenEnum.Siedler.toString() + "_Text"
@@ -240,12 +257,31 @@ class GuiFx(controller: GameController) extends JFXApp {
     /*List()*/
   }
 
+  val statistikBox: VBox = new VBox {
+    prefWidth = 502
+    prefHeight = 300
+    //padding = Insets(50, 50, 50, 50)
+
+    visible = true
+    style = "-fx-background-image: url('/konsole2.png'); " +
+      "-fx-background-repeat: stretch;"
+    //alignmentInParent = Pos.CENTER_RIGHT
+    children = statistikBoxInput
+
+    /*List()*/
+  }
+
   val borderPane = new BorderPane {
     style = "-fx-background-image: url('/background.png'); " +
       "-fx-background-position: center center; " +
       "-fx-background-repeat: stretch;"
+
     top = createRessourcenTitel
-    center = gebauedeInfoBox
+    center = new BorderPane {
+      margin = Insets(0, 10, 0, 10)
+      center = gebauedeInfoBox
+      right = statistikBox
+    }
 
     bottom = new FlowPane {
       style = "-fx-background-image: url('/hud.png'); " +
@@ -266,7 +302,7 @@ class GuiFx(controller: GameController) extends JFXApp {
   stage = new PrimaryStage {
     title = "Age of Scala"
     scene = new Scene(1024, 576) {
-
+      resizable_=(false)
       root = borderPane
 
     }
@@ -311,6 +347,40 @@ class GuiFx(controller: GameController) extends JFXApp {
             }
           }
         }
+
+        statistikListe() = List(new Text() {
+          alignmentInParent = Pos.CenterLeft
+          text = "Spielname: " + controller.spielName
+          margin = Insets(5, 0, 0, 37)
+          font = Font.font("Poor Richard", FontWeight.Bold, 16)
+          fill = Color.White
+        }, new Text() {
+          alignmentInParent = Pos.CenterLeft
+          text = "Spielzeit: " + controller.aktuelleSpielzeitAlsString
+          margin = Insets(5, 0, 0, 37)
+          font = Font.font("Poor Richard", FontWeight.Bold, 16)
+          fill = Color.White
+        }, new Text() {
+          alignmentInParent = Pos.CenterLeft
+          text = "Punktestand: " + controller.getGameScore
+          margin = Insets(5, 0, 0, 37)
+          font = Font.font("Poor Richard", FontWeight.Bold, 16)
+          fill = Color.White
+        }, new Text() {
+          alignmentInParent = Pos.CenterLeft
+          text = "Produktion: \n" + controller.getAktuelleProduktion.toString(BUFFER)
+          margin = Insets(5, 0, 0, 37)
+          font = Font.font("Poor Richard", FontWeight.Bold, 16)
+          fill = Color.White
+        }, new Text() {
+          alignmentInParent = Pos.CenterLeft
+          text = "Betriebskosten: \n" + controller.getAktuelleBetriebskosten.toString(BUFFER)
+          margin = Insets(5, 0, 0, 37)
+          font = Font.font("Poor Richard", FontWeight.Bold, 16)
+          fill = Color.White
+        })
+
+        statistikInputListeText.children = statistikListe.get
 
         if (aktuelleGebaudeInfo.get != "") {
           val gebauedeEnum: GebauedeEnum.Value = GebauedeEnum.withName(aktuelleGebaudeInfo.get)

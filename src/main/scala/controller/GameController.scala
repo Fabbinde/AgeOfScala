@@ -136,7 +136,7 @@ class GameController(private var spiel: Spiel, private val alleVerfuegbarenGebau
     berechneAktuellePunktzahl
   }
 
-  def getRessourcenAnzahl(ressource: RessourcenEnum.Value): Integer = {
+  def getRessourcenAnzahl(ressource: RessourcenEnum.Value): Double = {
     spiel.getRessource(ressource).getAnzahl
   }
 
@@ -144,14 +144,13 @@ class GameController(private var spiel: Spiel, private val alleVerfuegbarenGebau
     spiel.ressourcen
   }
 
-  def getMeineSiedler: Int = {
+  def getMeineSiedler: Double = {
     spiel.ressourcen.getRessource(RessourcenEnum.Siedler).getAnzahl
   }
 
   def getAktuelleProduktion: RessourcenContainer = {
     // TODO Das hier sollte mit val geloest werden irgendwie...
     var prod: RessourcenContainer = new RessourcenContainer
-    //spiel.getAlleErrichteteGebauede.getAlle.foreach { case x: ProduzierendesGebauede => x.output.getAlleRessourcen.foreach(f => println("HOUIO: " + f._2.getTyp + ": " + f._2.getAnzahl)) }
     spiel.getAlleErrichteteGebauede.getAlle.map {
       case p: ProduzierendesGebauede => prod = prod.addRessourcenByContainer(p.output)
       case w: Wohngebauede           =>
@@ -162,16 +161,16 @@ class GameController(private var spiel: Spiel, private val alleVerfuegbarenGebau
 
   def getAktuelleBetriebskosten: RessourcenContainer = {
     // TODO Das hier sollte mit val geloest werden irgendwie...
-    var prod: RessourcenContainer = new RessourcenContainer
+    var betriebs: RessourcenContainer = new RessourcenContainer
     spiel.getAlleErrichteteGebauede.getAlle.map {
-      case p: ProduzierendesGebauede => prod = prod.addRessourcenByContainer(p.input)
-      case w: Wohngebauede           => prod = prod.addRessourcenByContainer(w.input)
+      case p: ProduzierendesGebauede => betriebs = betriebs.addRessourcenByContainer(p.input)
+      case w: Wohngebauede           => betriebs = betriebs.addRessourcenByContainer(w.input)
       case _                         =>
     }
-    prod
+    betriebs
   }
 
-  def getRessourcenKapazitaet: Int = {
+  def getRessourcenKapazitaet: Double = {
     spiel.getLagerKapazitaet
   }
 
@@ -179,13 +178,13 @@ class GameController(private var spiel: Spiel, private val alleVerfuegbarenGebau
     // TODO Die Betriebskosten auch noch aktuallisieren, aber noch ueberlegen was tun wenn es keine Ressourcen mehr gibt -> Produktivitaet sinkt?
     spiel.getAlleErrichteteGebauede.getAlle.foreach {
       case p: ProduzierendesGebauede => {
-        p.output.getAlleRessourcen.foreach(r => spiel = spiel.ressourceHinzufuegen(r._2.getTyp, if ((r._2.getAnzahl / 60) < 1 && r._2.getAnzahl != 0) 1 else (r._2.getAnzahl / 60)))
-        p.input.getAlleRessourcen.foreach(r => spiel = spiel.ressourceAbziehen(r._2.getTyp, if ((r._2.getAnzahl / 60) < 1 && r._2.getAnzahl != 0) 1 else (r._2.getAnzahl / 60)))
+        p.output.getAlleRessourcen.foreach(r => spiel = spiel.ressourceHinzufuegen(r._2.getTyp, r._2.getAnzahl / 60))
+        p.input.getAlleRessourcen.foreach(r => spiel = spiel.ressourceAbziehen(r._2.getTyp, if((r._2.getAnzahl / 60) <= 0 ) 0 else (r._2.getAnzahl / 60)))
       }
-      case w: Wohngebauede           => w.input.getAlleRessourcen.foreach(r => spiel = spiel.ressourceAbziehen(r._2.getTyp, if ((r._2.getAnzahl / 60) < 1 && r._2.getAnzahl != 0) 1 else (r._2.getAnzahl / 60)))
-      case _                         =>
+      case w: Wohngebauede => w.input.getAlleRessourcen.foreach(r => spiel = spiel.ressourceAbziehen(r._2.getTyp, if((r._2.getAnzahl / 60) <= 0 ) 0 else (r._2.getAnzahl / 60)))
+      case _               =>
     }
-    
+
   }
 
   def stoppeAsyncRessourcenActor() = cancellable.cancel()
@@ -205,6 +204,12 @@ class GameController(private var spiel: Spiel, private val alleVerfuegbarenGebau
   def aktuelleSpielzeitAlsString: String = {
     val p: Period = spiel.aktuelleSpielZeit
     "Tage: " + p.getDays + " | Stunden: " + p.getHours + " | Minuten: " + p.getMinutes + " | Sekunden: " + p.getSeconds
+  }
+  
+  def spielName = spiel.name
+  
+  def setSpielName(name: String) = {
+    spiel = spiel.setSpielName(name)
   }
 
 }

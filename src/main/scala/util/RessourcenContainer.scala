@@ -9,7 +9,7 @@ case class RessourcenContainer(private val ressourcen: Map[RessourcenEnum.Value,
                                  RessourcenEnum.Nahrung -> new Ressource(RessourcenEnum.Nahrung, 0),
                                  RessourcenEnum.Siedler -> new Ressource(RessourcenEnum.Siedler, 0))) extends Serializable {
 
-  private def buildContainer(typ: RessourcenEnum.Value, anzahl: Integer) = copy(ressourcen + (typ -> new Ressource(typ, anzahl)))
+  private def buildContainer(typ: RessourcenEnum.Value, anzahl: Double) = copy(ressourcen + (typ -> new Ressource(typ, anzahl)))
 
   def getRessource(res: RessourcenEnum.Value) = ressourcen.filter { _._1 == res }.head._2
 
@@ -17,9 +17,9 @@ case class RessourcenContainer(private val ressourcen: Map[RessourcenEnum.Value,
 
   def getAsList: List[Ressource] = ressourcen.values.toList
 
-  def addRessource(anzahl: Integer, typ: RessourcenEnum.Value) = buildContainer(typ, getRessource(typ).getAnzahl + anzahl)
+  def addRessource(anzahl: Double, typ: RessourcenEnum.Value) = buildContainer(typ, getRessource(typ).getAnzahl + anzahl)
 
-  def minusRessource(anzahl: Integer, typ: RessourcenEnum.Value) = buildContainer(typ, getRessource(typ).getAnzahl - anzahl)
+  def minusRessource(anzahl: Double, typ: RessourcenEnum.Value) = buildContainer(typ, getRessource(typ).getAnzahl - anzahl)
 
   def addRessourcenByContainer(con: RessourcenContainer): RessourcenContainer = {
     val holz = buildContainer(RessourcenEnum.Holz, con.getRessource(RessourcenEnum.Holz).getAnzahl + getRessource(RessourcenEnum.Holz).getAnzahl)

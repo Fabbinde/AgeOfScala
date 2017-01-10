@@ -30,23 +30,23 @@ case class Spiel(name: String, ressourcen: RessourcenContainer, private val erri
     this
   }
 
-  def ressourceHinzufuegen(ressource: RessourcenEnum.Value, anzahl: Integer): Spiel = {
-    val sollGroesse: Int = anzahl + ressourcen.getRessource(ressource).getAnzahl
+  def ressourceHinzufuegen(ressource: RessourcenEnum.Value, anzahl: Double): Spiel = {
+    val sollGroesse: Double = anzahl + ressourcen.getRessource(ressource).getAnzahl
     if (getLagerKapazitaet == ressourcen.getRessource(ressource).getAnzahl) return new Spiel(name, ressourcen, errichteteGebauede, startZeit) // Wenn Ressource == Lagerkapazitaet
     if (getLagerKapazitaet < sollGroesse) return new Spiel(name, ressourcen.addRessource(getLagerKapazitaet - ressourcen.getRessource(ressource).getAnzahl, ressource), errichteteGebauede, startZeit)
     return new Spiel(name, ressourcen.addRessource(anzahl, ressource), errichteteGebauede, startZeit)
   }
 
-  def ressourceAbziehen(ressource: RessourcenEnum.Value, anzahl: Integer): Spiel = {
-    val sollGroesse: Int = ressourcen.getRessource(ressource).getAnzahl - anzahl
+  def ressourceAbziehen(ressource: RessourcenEnum.Value, anzahl: Double): Spiel = {
+    val sollGroesse: Double = ressourcen.getRessource(ressource).getAnzahl - anzahl
     //if (sollGroesse == 0) return new Spiel(name, ressourcen, errichteteGebauede, startZeit)
-    //if (sollGroesse < 0) return new Spiel(name, ressourcen.minusRessource(ressourcen.getRessource(ressource).getAnzahl, ressource), errichteteGebauede, startZeit)
+    if (sollGroesse <= 0) return new Spiel(name, ressourcen.minusRessource(ressourcen.getRessource(ressource).getAnzahl, ressource), errichteteGebauede, startZeit)
     return new Spiel(name, ressourcen.minusRessource(anzahl, ressource), errichteteGebauede, startZeit)
   }
 
   def getAlleErrichteteGebauede: GebauedeFactory = errichteteGebauede
 
-  def getLagerKapazitaet: Int = {
+  def getLagerKapazitaet: Double = {
     return getAlleErrichteteGebauede.getAlle.foldLeft(0) { (sum, item) =>
       item match {
         case l: LagerGebauede => sum + l.getKapazitaet
@@ -57,7 +57,8 @@ case class Spiel(name: String, ressourcen: RessourcenContainer, private val erri
 
   def aktuelleSpielZeit: Period = {
     new Period(startZeit, DateTime.now)
-
   }
+
+  def setSpielName(name: String): Spiel = new Spiel(name, ressourcen, errichteteGebauede, startZeit)
 
 }
