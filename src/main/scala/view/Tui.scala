@@ -27,6 +27,7 @@ class Tui(controller: GameController) extends Ui {
     println("'D NAME' - Gebaeude mit NAME abreissen")
     println("'Save' - Spiel speichern")
     println("'Load' - Spiel laden")
+    println("'Stop' - Spiel beenden")
     print("Eingabe: ")
   }
 
@@ -37,7 +38,7 @@ class Tui(controller: GameController) extends Ui {
         command(0) match {
           case "B" => gebauedeBauen(GebauedeEnum.withName(param))
           case "D" => gebauedeAbreissen(GebauedeEnum.withName(param))
-          case _ => println("Falscher Parameter")
+          case _   => println("Falscher Parameter")
         }
         //gebauedeBauen(GebauedeEnum.withName(param))
       } catch {
@@ -72,11 +73,14 @@ class Tui(controller: GameController) extends Ui {
         case "Load" =>
           if (controller.spielLaden) println("Spiel geladen!")
           else println("Fehler beim Laden")
-        case "P"      => println("Aktuelle Punktzahl: " + controller.getGameScore)
-        case "Z"      => println("Aktuelle Spielzeit: " + controller.aktuelleSpielzeitAlsString)
-        case "Exit"   => return
+        case "P" => println("Aktuelle Punktzahl: " + controller.getGameScore)
+        case "Z" => println("Aktuelle Spielzeit: " + controller.aktuelleSpielzeitAlsString)
+        case "Stop" => {
+          controller.spielBeenden
+          return
+        }
         case "Update" => refresh // Updated die Werte, ist nur fuer Testzwecke hier ...
-        case "s"      => controller.stoppeAsyncRessourcenActor()
+        //case "Stop"      => controller.stoppeAsyncRessourcenActor()
         case _        => println("Falsche Eingabe")
       }
       showMenu

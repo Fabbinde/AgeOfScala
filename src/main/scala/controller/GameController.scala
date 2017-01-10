@@ -17,13 +17,14 @@ import main.scala.persist.FilePersistController
 import main.scala.util.KategorieScoreEnum
 import org.joda.time.Period
 import main.scala.util.RessourcenContainer
+import akka.dispatch.OnComplete
 
 // Also das Spiel wird immer neu erstellt und dem Controller zugewiesen. Das ist das einzige Attribut das var haben darf 
 // (ein Objekt muss man immer aendern, sonst muesste man das Spiel immer wieder neu kompilieren)
 
 class GameController(private var spiel: Spiel, private val alleVerfuegbarenGebauede: GebauedeFactory, private val startRessourcen: RessourcenContainer) {
 
-  private val persistController: PersistController = new FilePersistController
+  private val persistController: FilePersistController = new FilePersistController
 
   // Alle wichtigen Objekte laden um den Scheduler auszufuehren
   private val actorSystem = ActorSystem()
@@ -41,14 +42,16 @@ class GameController(private var spiel: Spiel, private val alleVerfuegbarenGebau
 
   def spielStarten {
 
-    // Spiel soll immutable sein, daher muss das Objekt immer neu gesetzt werden
-    spiel = new Spiel("TestSpiel", startRessourcen, new GebauedeFactory)
-    spiel = spiel.gebauedeHinzufuegen(ConfigLoader.erstelleDefaultGebauedeMitInfo(GebauedeEnum.KleinesLager).get)
+    if (!spielLaden) {
+      // Spiel soll immutable sein, daher muss das Objekt immer neu gesetzt werden
+      spiel = new Spiel("TestSpiel", startRessourcen, new GebauedeFactory)
+      spiel = spiel.gebauedeHinzufuegen(ConfigLoader.erstelleDefaultGebauedeMitInfo(GebauedeEnum.KleinesLager).get)
+    }
 
   }
 
   def spielBeenden {
-
+    cancellable.cancel()
   }
 
   def spielSpeichern: Boolean = {
@@ -67,6 +70,8 @@ class GameController(private var spiel: Spiel, private val alleVerfuegbarenGebau
     //if (spielLoaded.) spiel = spielLoaded; return true
     true
   }
+
+  def spielVorhanden: Boolean = persistController.fileExist
 
   def gebauedeBauen(gebauede: GebauedeEnum.Value): ResultEnum.Value = {
 
@@ -173,10 +178,14 @@ class GameController(private var spiel: Spiel, private val alleVerfuegbarenGebau
   def aktuallisiereSpielRessourcen {
     // TODO Die Betriebskosten auch noch aktuallisieren, aber noch ueberlegen was tun wenn es keine Ressourcen mehr gibt -> Produktivitaet sinkt?
     spiel.getAlleErrichteteGebauede.getAlle.foreach {
-      case p: ProduzierendesGebauede => p.output.getAlleRessourcen.foreach(r => spiel = spiel.ressourceHinzufuegen(r._2.getTyp, if ((r._2.getAnzahl / 60) < 1 && r._2.getAnzahl != 0) 1 else (r._2.getAnzahl / 60)))
+      case p: ProduzierendesGebauede => {
+        p.output.getAlleRessourcen.foreach(r => spiel = spiel.ressourceHinzufuegen(r._2.getTyp, if ((r._2.getAnzahl / 60) < 1 && r._2.getAnzahl != 0) 1 else (r._2.getAnzahl / 60)))
+        p.input.getAlleRessourcen.foreach(r => spiel = spiel.ressourceAbziehen(r._2.getTyp, if ((r._2.getAnzahl / 60) < 1 && r._2.getAnzahl != 0) 1 else (r._2.getAnzahl / 60)))
+      }
       case w: Wohngebauede           => w.input.getAlleRessourcen.foreach(r => spiel = spiel.ressourceAbziehen(r._2.getTyp, if ((r._2.getAnzahl / 60) < 1 && r._2.getAnzahl != 0) 1 else (r._2.getAnzahl / 60)))
       case _                         =>
     }
+    
   }
 
   def stoppeAsyncRessourcenActor() = cancellable.cancel()

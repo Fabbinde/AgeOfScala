@@ -55,15 +55,11 @@ import javafx.scene.input.MouseEvent
 import javafx.event.EventHandler
 import scalafx.scene.control.TextInputDialog
 import java.util.Calendar
+import java.text.SimpleDateFormat
 
 class GuiFx(controller: GameController) extends JFXApp {
 
   val BUFFER = "        "
-
-  //controller.spielStarten(startRessourcen)
-  //if (!controller.spielLaden) {
-  //  newGame
-  //}
 
   val verfuegbareGebauede = ObservableBuffer[Gebauede](controller.getAlleVerfuegbarenGebauede.getAlle)
   val verfuegbareRessourcen = ObservableBuffer[Ressource](controller.getMeineRessourcen.getAsList)
@@ -75,6 +71,8 @@ class GuiFx(controller: GameController) extends JFXApp {
   val aktuelleGebaudeInfo = new StringProperty(this, "aktuelleGebauedeInfo", "")
 
   //val statistik = ObservableBuffer[String](List("Punkte: " + controller.getGameScore, "Aktuelle Spielzeit: " + controller.aktuelleSpielzeitAlsString, "Anzahl gesamter Gebäude: " + controller.getAlleGebautenGebauede().getAlle.size))
+
+  if (!controller.spielVorhanden) newGame
 
   gebauedeInfoListe.onChange {
     if (aktuelleGebaudeInfo.get != "") {
@@ -136,7 +134,10 @@ class GuiFx(controller: GameController) extends JFXApp {
 
   def newGame {
     val now = Calendar.getInstance().getTime()
-    val dialog = new TextInputDialog(defaultValue = "Spieler_" + now) {
+    val zeit = new SimpleDateFormat("HH:mm")
+    val zeitAsString = zeit.format(now)
+
+    val dialog = new TextInputDialog(defaultValue = "Spieler_" + zeitAsString) {
       initOwner(stage)
       title = "Neues Spiel"
       headerText = "Age of Scala - Neues Spiel"
