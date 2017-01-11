@@ -26,7 +26,7 @@ object Run extends App {
   val guiFx = new GuiFx(controller) with Ui
   val hello = new Thread(new Runnable {
     def run() {
-      guiFx.main(Array())
+      guiFx.run
     }
   })
   hello.start()

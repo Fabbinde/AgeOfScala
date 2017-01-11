@@ -18,6 +18,9 @@ import main.scala.util.KategorieScoreEnum
 import org.joda.time.Period
 import main.scala.util.RessourcenContainer
 import akka.dispatch.OnComplete
+import java.net.InetAddress
+import persist.HighScorePersistController
+import persist.HighScorePersistController
 
 // Also das Spiel wird immer neu erstellt und dem Controller zugewiesen. Das ist das einzige Attribut das var haben darf 
 // (ein Objekt muss man immer aendern, sonst muesste man das Spiel immer wieder neu kompilieren)
@@ -26,6 +29,8 @@ class GameController(private var spiel: Spiel, private val alleVerfuegbarenGebau
 
   private val persistController: FilePersistController = new FilePersistController
 
+  private val highscoreController: HighScorePersistController = new HighScorePersistController
+  
   // Alle wichtigen Objekte laden um den Scheduler auszufuehren
   private val actorSystem = ActorSystem()
   private val scheduler = actorSystem.scheduler
@@ -196,11 +201,7 @@ class GameController(private var spiel: Spiel, private val alleVerfuegbarenGebau
   def stoppeAsyncRessourcenActor() = cancellable.cancel()
 
   private def berechneAktuellePunktzahl(): Int = {
-    val a: Int = spiel.getAlleErrichteteGebauede.getAlle.count { g => g.kategorie == KategorieScoreEnum.A }
-    val b: Int = spiel.getAlleErrichteteGebauede.getAlle.count { g => g.kategorie == KategorieScoreEnum.B }
-    val c: Int = spiel.getAlleErrichteteGebauede.getAlle.count { g => g.kategorie == KategorieScoreEnum.C }
-
-    a * 100 + (150 * b) + (200 * c)
+    spiel.berechneAktuellePunktzahl()
   }
 
   def aktuelleSpielzeitAlsPeriod: Period = {
@@ -218,4 +219,10 @@ class GameController(private var spiel: Spiel, private val alleVerfuegbarenGebau
     spiel = spiel.setSpielName(name)
   }
 
+  def getHost = InetAddress.getLocalHost.getHostName
+  
+  def getHighscore = highscoreController.load
+  
+  def saveHighscore = highscoreController.save(spiel)
+  
 }

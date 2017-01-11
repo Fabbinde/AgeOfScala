@@ -7,6 +7,7 @@ import main.scala.util.GebauedeEnum
 import main.scala.util.RessourcenEnum
 import main.scala.util.RessourcenContainer
 import main.scala.util.GebauedeFactory
+import main.scala.util.KategorieScoreEnum
 
 case class Spiel(name: String, ressourcen: RessourcenContainer, private val errichteteGebauede: GebauedeFactory = new GebauedeFactory, private val startZeit: DateTime = DateTime.now) extends Serializable {
 
@@ -59,5 +60,13 @@ case class Spiel(name: String, ressourcen: RessourcenContainer, private val erri
   }
 
   def setSpielName(name: String): Spiel = new Spiel(name, ressourcen, errichteteGebauede, startZeit)
+
+  def berechneAktuellePunktzahl(): Int = {
+    val a: Int = this.getAlleErrichteteGebauede.getAlle.count { g => g.kategorie == KategorieScoreEnum.A }
+    val b: Int = this.getAlleErrichteteGebauede.getAlle.count { g => g.kategorie == KategorieScoreEnum.B }
+    val c: Int = this.getAlleErrichteteGebauede.getAlle.count { g => g.kategorie == KategorieScoreEnum.C }
+
+    a * 100 + (150 * b) + (200 * c)
+  }
 
 }

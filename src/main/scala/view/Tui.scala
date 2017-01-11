@@ -23,6 +23,7 @@ class Tui(controller: GameController) extends Ui {
     println("'A' - Produktion und Betriebskosten einsehen")
     println("'P' - Aktuellen Punktestand")
     println("'Z' - Aktuellen Spielzeit")
+    println("'H' - Highscore")
     println("'B NAME' - Gebaeude mit NAME errichten")
     println("'D NAME' - Gebaeude mit NAME abreissen")
     println("'Save' - Spiel speichern")
@@ -75,7 +76,16 @@ class Tui(controller: GameController) extends Ui {
           else println("Fehler beim Laden")
         case "P" => println("Aktuelle Punktzahl: " + controller.getGameScore)
         case "Z" => println("Aktuelle Spielzeit: " + controller.aktuelleSpielzeitAlsString)
+        case "H" => controller.getHighscore match {
+          case Some(list) => {
+            println("Highscore:")
+            list.foreach(f => println(f))
+            println
+          }
+          case None => println("")
+        }
         case "Stop" => {
+          controller.saveHighscore
           controller.spielBeenden
           return
         }

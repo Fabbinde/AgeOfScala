@@ -56,6 +56,12 @@ import javafx.event.EventHandler
 import scalafx.scene.control.TextInputDialog
 import java.util.Calendar
 import java.text.SimpleDateFormat
+import scalafx.scene.control._
+import scalafx.geometry.Orientation
+import scalafx.scene.layout.GridPane
+import scalafx.scene.control.Label
+import scalafx.scene.control.ButtonBar.ButtonData
+
 
 class GuiFx(controller: GameController) extends JFXApp {
 
@@ -71,7 +77,6 @@ class GuiFx(controller: GameController) extends JFXApp {
 
   val aktuelleGebaudeInfo = new StringProperty(this, "aktuelleGebauedeInfo", "")
   val aktuelleStatistik = new StringProperty(this, "aktuelleStatistik", "")
-
 
   if (!controller.spielVorhanden) newGame
 
@@ -154,7 +159,7 @@ class GuiFx(controller: GameController) extends JFXApp {
     val zeit = new SimpleDateFormat("HH:mm")
     val zeitAsString = zeit.format(now)
 
-    val dialog = new TextInputDialog(defaultValue = "Spieler_" + zeitAsString) {
+    val dialog = new TextInputDialog(defaultValue = controller.getHost + " " + zeitAsString) {
       initOwner(stage)
       title = "Neues Spiel"
       headerText = "Age of Scala - Neues Spiel"
@@ -168,6 +173,36 @@ class GuiFx(controller: GameController) extends JFXApp {
       case None       => println("Dialog was canceled.")
     }
 
+  }
+
+  def showHighScore = {
+
+    val dialog = new Dialog() {
+      initOwner(stage)
+      title = "Highscore"
+      headerText = "Deine Highscore Liste"
+    }
+
+    val list = new ListView[String] {
+      prefWidth = 600
+      items = ObservableBuffer(controller.getHighscore.get)
+    }
+
+    val grid = new GridPane() {
+      hgap = 10
+      vgap = 20
+      padding = Insets(20, 100, 10, 10)
+      
+      add(list, 1, 0)
+    }
+
+    val pane: DialogPane = new DialogPane()
+    pane.buttonTypes_=(Seq(ButtonType.Cancel))
+    pane.content = grid
+
+    dialog.dialogPane_=(pane)
+
+    dialog.showAndWait()
   }
 
   private def createRessourcenTitel = new TilePane {
@@ -301,6 +336,7 @@ class GuiFx(controller: GameController) extends JFXApp {
 
   stage = new PrimaryStage {
     title = "Age of Scala"
+    icons.addAll(new Image("/logo.png")) 
     scene = new Scene(1024, 576) {
       resizable_=(false)
       root = borderPane
@@ -449,10 +485,11 @@ class GuiFx(controller: GameController) extends JFXApp {
         items = List(
           new MenuItem("Neues Spiel") { //onAction = {
             onAction = {
-              e: ActionEvent => { 
-                controller.neuesSpiel // TODO ResultMatcher drum rum?
-                newGame
-              }
+              e: ActionEvent =>
+                {
+                  controller.neuesSpiel // TODO ResultMatcher drum rum?
+                  newGame
+                }
             }
           },
           new MenuItem("Spiel speichern") {
@@ -465,10 +502,16 @@ class GuiFx(controller: GameController) extends JFXApp {
               e: ActionEvent => controller.spielLaden // TODO ResultMatcher drum rum?
             }
           },
+          new MenuItem("Highscore") {
+            onAction = {
+              e: ActionEvent => showHighScore
+            }
+          },
           new MenuItem("Beenden") {
             onAction = {
               e: ActionEvent =>
                 {
+                  controller.saveHighscore
                   cancellable.cancel()
                   controller.spielBeenden
                   stage.close()
@@ -481,7 +524,7 @@ class GuiFx(controller: GameController) extends JFXApp {
   }
 
   def run() {
-    //controller.spielStarten
+    main(Array())
   }
 
   def gebauedeBauen(typ: GebauedeEnum.Value) {

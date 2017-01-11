@@ -1,32 +1,48 @@
 package persist
 
-import main.scala.model.Spiel
 import java.io.File
 
+import scala.io.Source
+
+import main.scala.model.Spiel
+import java.io.PrintWriter
+
 class HighScorePersistController {
-  val highscore = "highscore.aos"
+  val highscoreFile = "highscore.aos"
+
+  def sortByScore(s1: String, s2: String) = {
+    s1.split(":::")(0).replaceAll("\\s", "").toInt > s2.split(":::")(0).replaceAll("\\s", "").toInt
+  }
 
   def save(spiel: Spiel): Boolean = {
-    /*val oos = new ObjectOutputStream(new FileOutputStream(filename))
-    oos.writeObject(spiel)
-    oos.close
-*/
-    //new PrintWriter("filename") { write("file contents"); close }
+    val p = spiel.aktuelleSpielZeit
+    val zeit = "Tage: " + p.getDays + " | Stunden: " + p.getHours + " | Minuten: " + p.getMinutes + " | Sekunden: " + p.getSeconds
+    val list: List[String] = Source.fromFile(highscoreFile).getLines.toList.map(x => if (x.split(":::").size == 4) { x.split(":::").tail.toList.mkString(":::") + "\n" } else { x + "\n" })
+    val sortedList: List[String] = list ::: List(new String(spiel.berechneAktuellePunktzahl + " ::: " + spiel.name + " ::: " + zeit + "\n"))
+
+    import java.io._
+
+    val writer = new BufferedWriter(new FileWriter(highscoreFile))
+    sortedList.sortWith(sortByScore).zipWithIndex.map {
+      case (element, index) =>
+        val inc = index + 1
+        s"${inc}. ::: ${element}"
+
+    }.foreach(writer.write)
+    writer.close()
+
     true
   }
 
-  def load: Option[String] = {
+  def load: Option[List[String]] = {
     if (fileExist) {
-      /*val ois = new ObjectInputStream(new FileInputStream("savegame.aos"))
-      val spiel: Spiel = ois.readObject().asInstanceOf[Spiel]
-      ois.close()
-      return Some(spiel)*/
+      return Some(Source.fromFile(highscoreFile).getLines.toList)
     }
-    None
+    Some(Nil)
   }
 
-  def delete: Boolean = new File(highscore).delete
+  def delete: Boolean = new File(highscoreFile).delete
 
-  def fileExist: Boolean = new File(highscore).exists
+  def fileExist: Boolean = new File(highscoreFile).exists
 
 }
