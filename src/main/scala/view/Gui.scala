@@ -207,7 +207,7 @@ class GuiFx(controller: GameController) extends JFXApp {
           margin = Insets(5, 0, 0, 11)
           wrappingWidth = 50
         },
-        new Text(controller.getMeineRessourcen.getRessource(RessourcenEnum.Siedler).getAnzahl.toString) {
+        new Text(controller.getMeineRessourcen.getRessource(RessourcenEnum.Siedler).getAnzahl.toInt.toString) {
           font = Font.font("Poor Richard", FontWeight.Bold, 12)
           fill = Color.White
           id = RessourcenEnum.Siedler.toString() + "_Text"
@@ -328,7 +328,7 @@ class GuiFx(controller: GameController) extends JFXApp {
 
           if (text != null) {
             val newText = new Text(text) {
-              text = controller.getMeineRessourcen.getRessource(r.getTyp).getAnzahl.toString
+              text = controller.getMeineRessourcen.getRessource(r.getTyp).getAnzahl.toInt.toString
             }
           }
         }
@@ -449,7 +449,10 @@ class GuiFx(controller: GameController) extends JFXApp {
         items = List(
           new MenuItem("Neues Spiel") { //onAction = {
             onAction = {
-              e: ActionEvent => controller.spielStarten // TODO ResultMatcher drum rum?
+              e: ActionEvent => { 
+                controller.neuesSpiel // TODO ResultMatcher drum rum?
+                newGame
+              }
             }
           },
           new MenuItem("Spiel speichern") {
@@ -470,6 +473,7 @@ class GuiFx(controller: GameController) extends JFXApp {
                   controller.spielBeenden
                   stage.close()
                   stopApp()
+                  Platform.exit()
                 }
             }
           })

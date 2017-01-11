@@ -46,11 +46,11 @@ case class RessourcenContainer(private val ressourcen: Map[RessourcenEnum.Value,
   }
   
   def toString(buffer: String): String = {
-    val holz = if (ressourcen.get(RessourcenEnum.Holz).get.getAnzahl > 0) buffer + "Holz: " + ressourcen.get(RessourcenEnum.Holz).get.getAnzahl + "\n" else ""
-    val nahrung = if (ressourcen.get(RessourcenEnum.Nahrung).get.getAnzahl > 0) buffer + "Nahrung: " + ressourcen.get(RessourcenEnum.Nahrung).get.getAnzahl + "\n" else ""
-    val gold = if (ressourcen.get(RessourcenEnum.Gold).get.getAnzahl > 0) buffer + "Gold: " + ressourcen.get(RessourcenEnum.Gold).get.getAnzahl + "\n" else ""
-    val stein = if (ressourcen.get(RessourcenEnum.Stein).get.getAnzahl > 0) buffer + "Stein: " + ressourcen.get(RessourcenEnum.Stein).get.getAnzahl + "\n" else ""
-    val siedler = if (ressourcen.get(RessourcenEnum.Siedler).get.getAnzahl > 0) buffer + "Siedler: " + ressourcen.get(RessourcenEnum.Siedler).get.getAnzahl + "\n" else ""
+    val holz = if (ressourcen.get(RessourcenEnum.Holz).get.getAnzahl > 0) buffer + "Holz: " + ressourcen.get(RessourcenEnum.Holz).get.getAnzahl.toInt + "\n" else ""
+    val nahrung = if (ressourcen.get(RessourcenEnum.Nahrung).get.getAnzahl > 0) buffer + "Nahrung: " + ressourcen.get(RessourcenEnum.Nahrung).get.getAnzahl.toInt + "\n" else ""
+    val gold = if (ressourcen.get(RessourcenEnum.Gold).get.getAnzahl > 0) buffer + "Gold: " + ressourcen.get(RessourcenEnum.Gold).get.getAnzahl.toInt + "\n" else ""
+    val stein = if (ressourcen.get(RessourcenEnum.Stein).get.getAnzahl > 0) buffer + "Stein: " + ressourcen.get(RessourcenEnum.Stein).get.getAnzahl.toInt + "\n" else ""
+    val siedler = if (ressourcen.get(RessourcenEnum.Siedler).get.getAnzahl > 0) buffer + "Siedler: " + ressourcen.get(RessourcenEnum.Siedler).get.getAnzahl.toInt + "\n" else ""
 
     (holz + nahrung + gold + stein + siedler).dropRight(1)
   }

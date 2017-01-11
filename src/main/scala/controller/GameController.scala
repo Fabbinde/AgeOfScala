@@ -50,6 +50,12 @@ class GameController(private var spiel: Spiel, private val alleVerfuegbarenGebau
 
   }
 
+  def neuesSpiel = {
+    spiel = new Spiel("TestSpiel", startRessourcen, new GebauedeFactory)
+    spiel = spiel.gebauedeHinzufuegen(ConfigLoader.erstelleDefaultGebauedeMitInfo(GebauedeEnum.KleinesLager).get)
+    
+  }
+
   def spielBeenden {
     cancellable.cancel()
   }
@@ -179,9 +185,9 @@ class GameController(private var spiel: Spiel, private val alleVerfuegbarenGebau
     spiel.getAlleErrichteteGebauede.getAlle.foreach {
       case p: ProduzierendesGebauede => {
         p.output.getAlleRessourcen.foreach(r => spiel = spiel.ressourceHinzufuegen(r._2.getTyp, r._2.getAnzahl / 60))
-        p.input.getAlleRessourcen.foreach(r => spiel = spiel.ressourceAbziehen(r._2.getTyp, if((r._2.getAnzahl / 60) <= 0 ) 0 else (r._2.getAnzahl / 60)))
+        p.input.getAlleRessourcen.foreach(r => spiel = spiel.ressourceAbziehen(r._2.getTyp, if ((r._2.getAnzahl / 60) <= 0) 0 else (r._2.getAnzahl / 60)))
       }
-      case w: Wohngebauede => w.input.getAlleRessourcen.foreach(r => spiel = spiel.ressourceAbziehen(r._2.getTyp, if((r._2.getAnzahl / 60) <= 0 ) 0 else (r._2.getAnzahl / 60)))
+      case w: Wohngebauede => w.input.getAlleRessourcen.foreach(r => spiel = spiel.ressourceAbziehen(r._2.getTyp, if ((r._2.getAnzahl / 60) <= 0) 0 else (r._2.getAnzahl / 60)))
       case _               =>
     }
 
@@ -205,9 +211,9 @@ class GameController(private var spiel: Spiel, private val alleVerfuegbarenGebau
     val p: Period = spiel.aktuelleSpielZeit
     "Tage: " + p.getDays + " | Stunden: " + p.getHours + " | Minuten: " + p.getMinutes + " | Sekunden: " + p.getSeconds
   }
-  
+
   def spielName = spiel.name
-  
+
   def setSpielName(name: String) = {
     spiel = spiel.setSpielName(name)
   }

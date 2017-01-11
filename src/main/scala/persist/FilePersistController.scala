@@ -15,6 +15,7 @@ class FilePersistController extends PersistController {
 
   val filename = "savegame.aos"
 
+
   def save(spiel: Spiel): Boolean = {
     val oos = new ObjectOutputStream(new FileOutputStream(filename))
     oos.writeObject(spiel)
@@ -37,6 +38,7 @@ class FilePersistController extends PersistController {
     new File(filename).delete
   }
 
+  // TODO KLEINER MACHEN OHNE BOOL UND OHNE KLAMMERN
   def fileExist: Boolean = {
     new File(filename).exists
   }

@@ -12,7 +12,6 @@ case class Spiel(name: String, ressourcen: RessourcenContainer, private val erri
 
   def starteNeuesSpiel = {
 
-    //aktuelleZeit = Option(new Timer)
     //aktuelleZeit.get.starteTimer
     //copy(name, ressourcen, errichteteGebauede, aktuelleZeit)
   }
