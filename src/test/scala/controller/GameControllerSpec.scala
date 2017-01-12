@@ -11,7 +11,8 @@ import main.scala.model.Gebauede
 
 import org.specs2._
 
-class GameControllerSpec extends mutable.Specification { isolated
+class GameControllerSpec extends mutable.Specification {
+  isolated
 
   val startSettler = 20
   val startWood = 200
@@ -19,13 +20,11 @@ class GameControllerSpec extends mutable.Specification { isolated
   val startStone = 202
   val startFood = 203
 
-  val gameName = "TestGame"
+  val gameName = "TestSpiel"
 
   val smallStock = ConfigLoader.erstelleDefaultGebauedeMitInfo(GebauedeEnum.KleinesLager).get
 
   val gebauede: GebauedeFactory = ConfigLoader.ladeGebauede
-
-  val controller: GameController = new GameController(gameName, null, gebauede)
 
   val cont: RessourcenContainer = new RessourcenContainer
   val res = cont.addRessource(startWood, RessourcenEnum.Holz).
@@ -33,8 +32,8 @@ class GameControllerSpec extends mutable.Specification { isolated
     addRessource(startGold, RessourcenEnum.Gold).
     addRessource(startStone, RessourcenEnum.Stein).
     addRessource(startFood, RessourcenEnum.Nahrung)
-
-  controller.spielStarten(res)
+  val controller: GameController = new GameController(null, gebauede, res)
+  controller.spielStarten(false)
 
   "The game " should {
     "have the name " + gameName in {

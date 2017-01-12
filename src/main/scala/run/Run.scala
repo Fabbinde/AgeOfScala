@@ -21,7 +21,7 @@ object Run extends App {
     addRessource(200, RessourcenEnum.Nahrung)
 
   val controller: GameController = new GameController(null, gebauede, res)
-  controller.spielStarten
+  controller.spielStarten(true)
 
   val guiFx = new GuiFx(controller) with Ui
   val hello = new Thread(new Runnable {

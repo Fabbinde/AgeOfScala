@@ -45,13 +45,17 @@ class GameController(private var spiel: Spiel, private val alleVerfuegbarenGebau
     interval = 1 seconds,
     runnable = taskAktuallisieren)
 
-  def spielStarten {
+  def spielStarten(autoLoad: Boolean) {
 
-    if (!spielLaden) {
+    if (autoLoad && !spielLaden) {
       // Spiel soll immutable sein, daher muss das Objekt immer neu gesetzt werden
       spiel = new Spiel("TestSpiel", startRessourcen, new GebauedeFactory)
       spiel = spiel.gebauedeHinzufuegen(ConfigLoader.erstelleDefaultGebauedeMitInfo(GebauedeEnum.KleinesLager).get)
     }
+    else {
+      neuesSpiel
+    }
+    
 
   }
 
