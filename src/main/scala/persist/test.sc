@@ -19,27 +19,16 @@ object test {
                                                   //| nuten: 39 | Sekunden: 54")
   tp2.split(":::")                                //> res1: Array[String] = Array("600 ", " Dieter ", " Tage: 0 | Stunden: 0 | Min
                                                   //| uten: 39 | Sekunden: 54")
+  
+  
+  def ltrim(s: String) = s.replaceAll("^\\s+", "")//> ltrim: (s: String)String
+  def removeLeadingSpaces(strings: Seq[String]) = strings.map(ltrim(_))
+                                                  //> removeLeadingSpaces: (strings: Seq[String])Seq[String]
 
-  val list: List[String] = Source.fromFile(highscoreFile).getLines.toList.map(x => if (x.size == 4) { x.split(":::").drop(1) + "\n" } else { x + "\n" })
-                                                  //> java.io.FileNotFoundException: highscore.aos (Das System kann die angegebene
-                                                  //|  Datei nicht finden)
-                                                  //| 	at java.io.FileInputStream.open0(Native Method)
-                                                  //| 	at java.io.FileInputStream.open(Unknown Source)
-                                                  //| 	at java.io.FileInputStream.<init>(Unknown Source)
-                                                  //| 	at scala.io.Source$.fromFile(Source.scala:91)
-                                                  //| 	at scala.io.Source$.fromFile(Source.scala:76)
-                                                  //| 	at scala.io.Source$.fromFile(Source.scala:54)
-                                                  //| 	at persist.test$$anonfun$main$1.apply$mcV$sp(persist.test.scala:17)
-                                                  //| 	at org.scalaide.worksheet.runtime.library.WorksheetSupport$$anonfun$$exe
-                                                  //| cute$1.apply$mcV$sp(WorksheetSupport.scala:76)
-                                                  //| 	at org.scalaide.worksheet.runtime.library.WorksheetSupport$.redirected(W
-                                                  //| orksheetSupport.scala:65)
-                                                  //| 	at org.scalaide.worksheet.runtime.library.WorksheetSupport$.$execute(Wor
-                                                  //| ksheetSupport.scala:75)
-                                                  //| 	at persist.test$.main(persist.test.scala:8)
-                                                  //| 	at persist.test.main(persist.test.scala)
-  val sortedList: List[String] = list ::: List(("200" + " ::: " + "Test" + " ::: " + "00:00" + "\n"))
+  val str = "   600   :::   Dieter    :::    Tage: 0 | Stunden: 1 | Minuten: 5 | Sekunden: 58"
+                                                  //> str  : String = "   600   :::   Dieter    :::    Tage: 0 | Stunden: 1 | Minu
+                                                  //| ten: 5 | Sekunden: 58"
 
-  println(sortedList)
-
+	removeLeadingSpaces(Seq(str))             //> res2: Seq[String] = List(600   :::   Dieter    :::    Tage: 0 | Stunden: 1 |
+                                                  //|  Minuten: 5 | Sekunden: 58)
 }

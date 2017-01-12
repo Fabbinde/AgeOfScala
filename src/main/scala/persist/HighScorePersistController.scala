@@ -17,7 +17,7 @@ class HighScorePersistController {
   def save(spiel: Spiel): Boolean = {
     val p = spiel.aktuelleSpielZeit
     val zeit = "Tage: " + p.getDays + " | Stunden: " + p.getHours + " | Minuten: " + p.getMinutes + " | Sekunden: " + p.getSeconds
-    val list: List[String] = Source.fromFile(highscoreFile).getLines.toList.map(x => if (x.split(":::").size == 4) { x.split(":::").tail.toList.mkString(":::") + "\n" } else { x + "\n" })
+    val list: List[String] = Source.fromFile(highscoreFile).getLines.toList.map(x => if (x.split(":::").size == 4) { x.split("::: ").tail.toList.mkString("::: ") + "\n" } else { x + "\n" })
     val sortedList: List[String] = list ::: List(new String(spiel.berechneAktuellePunktzahl + " ::: " + spiel.name + " ::: " + zeit + "\n"))
 
     import java.io._

@@ -10,6 +10,7 @@ import java.io.ObjectInputStream
 import java.io.FileInputStream
 import java.io.File
 import java.io.BufferedInputStream
+import scalaz.Inject
 
 class FilePersistController extends PersistController {
 
